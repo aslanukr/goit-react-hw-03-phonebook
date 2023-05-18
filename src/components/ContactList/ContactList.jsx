@@ -1,12 +1,26 @@
 import PropTypes from 'prop-types';
 import { ListItem } from './ListItem';
-import { List } from 'components/Styles.styled';
+import { List, Info } from 'components/Styles.styled';
+import Notiflix from 'notiflix';
 
 export const ContactList = ({ contactsArray, deleteContact }) => {
   return (
     <>
       <List>
-        <ListItem filteredContacts={contactsArray} deleteItem={deleteContact} />
+        {contactsArray.length ? (
+          contactsArray.map(({ id, name, number }) => (
+            <ListItem
+              key={id}
+              contact={{ id, name, number }}
+              deleteItem={deleteContact}
+            />
+          ))
+        ) : (
+          <>
+            {Notiflix.Notify.info('No contacts found')}
+            <Info>No contacts</Info>
+          </>
+        )}
       </List>
     </>
   );

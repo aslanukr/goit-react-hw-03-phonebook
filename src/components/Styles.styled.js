@@ -146,6 +146,9 @@ export const ContactItem = styled.li`
   align-items: center;
   margin: 0 auto;
   font-size: 15px;
+  @media screen and (min-width: 468px) {
+    font-size: 20px;
+  }
   @media screen and (min-width: 568px) {
     font-size: 25px;
   }
